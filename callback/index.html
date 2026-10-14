@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Tesla sign-in code</title></head>
+<body style="font-family:sans-serif;max-width:640px;margin:2em auto;padding:0 1em">
+<h2>Tesla sign-in</h2><div id="o"></div>
+<script>
+var p=new URLSearchParams(location.search),o=document.getElementById('o'),c=p.get('code'),e=p.get('error');
+function t(s){var d=document.createElement('p');d.textContent=s;o.appendChild(d)}
+if(c){t('Copy this code and give it to Grok Bot via the secure form:');var a=document.createElement('textarea');a.readOnly=true;a.style.width='100%';a.rows=4;a.value=c;o.appendChild(a);
+var b=document.createElement('button');b.textContent='Copy';b.onclick=function(){a.select();navigator.clipboard&&navigator.clipboard.writeText(c);b.textContent='Copied'};o.appendChild(b);
+t('State: '+(p.get('state')||''));t('The code expires in a few minutes.')}
+else if(e){t('Error: '+e+' '+(p.get('error_description')||''))}else{t('No code found in the URL.')}
+</script></body></html>
